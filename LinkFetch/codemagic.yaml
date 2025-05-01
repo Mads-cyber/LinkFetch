@@ -1,0 +1,12 @@
+workflows:
+  android-workflow:
+    name: Android Build
+    environment:
+      groups:
+        - keystore_credentials # Add if signing APK (optional)
+    scripts:
+      - name: Build APK
+        script: | 
+          ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/apk/**/*.apk
