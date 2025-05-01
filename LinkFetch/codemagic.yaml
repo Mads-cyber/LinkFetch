@@ -1,12 +1,16 @@
 workflows:
   android-workflow:
-    name: Android Build
+    name: Android Debug Build
     environment:
       groups:
-        - keystore_credentials # Add if signing APK (optional)
+        - android_signing # Only add if you need APK signing (see Step 3)
     scripts:
-      - name: Build APK
+      - name: Build Debug APK
         script: | 
           ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/apk/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - mudasarash@gmail.com # Replace with your email
