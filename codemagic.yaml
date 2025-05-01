@@ -1,0 +1,11 @@
+workflows:
+  android-workflow:
+    name: Android Build
+    environment:
+      groups:
+        - android_signing  # Only if signing APKs
+    scripts:
+      - name: Build Debug APK
+        script: ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/apk/**/*.apk
